@@ -1,0 +1,45 @@
+.PVmain {
+  background: var(--gray-100, #f7fafc);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px 0;
+  .PVcontainer {
+    background: white;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    gap: 20px;
+    border: 1px solid rgb(211, 217, 225);
+    border-radius: 5px;
+  }
+  .PVdescription {
+    width: 92%;
+    display: flex;
+    padding: 15px;
+    gap: 20px;
+  }
+}
+
+.PVlittlePhotos {
+  display: flex;
+  width: 100%;
+  margin-top: 15px;
+  gap: 5px;
+  .PVsinglePhoto {
+    width: 15%;
+    border: 1px solid rgb(211, 217, 225);
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.PVlastElements{
+  width: 90%;
+}

@@ -1,0 +1,32 @@
+.Rmain {
+  border-top: 1px solid rgb(211, 217, 225);
+  margin-right: 10px;
+  margin-top: 20px;
+  .Rheader {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  h4 {
+    color: #1c1c1c;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+  }
+  svg {
+    cursor: pointer;
+  }
+}
+
+.Rstars {
+    display: flex;
+    flex-direction: column;
+}
+
+.Rcheckbox {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #BDBDBD;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}

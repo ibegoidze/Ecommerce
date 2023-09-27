@@ -1,0 +1,40 @@
+.ESmain {
+  width: 100%;
+  background: var(--gray-100, #f7fafc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  .EScontainer {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+  }
+  .ESbox {
+    background: white;
+    width: 24%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(211, 217, 225);
+    border-radius: 5px;
+    span {
+        color: var(--dark, #1C1C1C);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22px;
+    } .EStext{
+        margin-left: 15px;
+        margin-bottom: 20px;
+    }
+    .ESbackImage {
+        width: 100%;
+        margin-bottom: 15px;
+        img {
+            width: 100%;
+        }
+    }
+  }
+}

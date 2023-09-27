@@ -1,0 +1,85 @@
+.StMain {
+  background: var(--gray-100, #f7fafc);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  .StContainer {
+    background: white;
+    width: 90%;
+    height: 240px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgb(211, 217, 225);
+    border-radius: 5px;
+    .StOffersBox {
+      width: 20%;
+      h3 {
+        margin: 15px 0 5px 10px;
+      }
+      h6 {
+        color: var(--gray-500, #8b96a5);
+        font-weight: 400;
+        font-size: 14px;
+        margin-left: 10px;
+      }
+      .StDateContainer {
+        display: flex;
+        gap: 5px;
+        margin-left: 10px;
+        margin-top: 15px;
+        gap: 10px;
+        .StDateBox {
+          border-radius: 4px;
+          background: var(--base-color-gray-800, #606060);
+          width: 15%;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          padding: 3px;
+          span {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .StSingleBox {
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      width: 80%;
+      img {
+        width: 65%;
+        height: 120px;
+      }
+      div {
+        display: flex;
+        justify-content: center;
+      }
+      li {
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border: 1px solid rgb(211, 217, 225);
+        .StSalePrice {
+          color: #eb001b;
+          border-radius: 29px;
+          background: #ffe3e3;
+          padding: 3px 13px 4px 13px;
+          width: 30%;
+          margin-right: auto;
+          margin-left: auto;
+        }
+        .StItemName {
+          line-height: 27px;
+        }
+      }
+    }
+  }
+}

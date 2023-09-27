@@ -1,0 +1,142 @@
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .mainFooter {
+    margin-top: 50px;
+    display: flex;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: flex-start;
+    height: 250px;
+    .footerBrand {
+      width: 21%;
+      display: flex;
+      flex-direction: column;
+      .footerBrandIcons {
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 3vh;
+      }
+      .footerIcons img {
+        padding-right: 5px;
+      }
+      .footerText {
+        color: #505050;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        word-wrap: "break-word";
+        padding-bottom: 3vh;
+      }
+    }
+  }
+}
+
+
+.mainFooter .footerAbout {
+  width: 6.5%;
+  margin-right: auto;
+  max-lines: auto;
+  display: flex;
+  flex-direction: column;
+  h6 {
+    font-size: 15px;
+    padding-bottom: 3vh;
+  }
+  span {
+    color: #8b96a5;
+    font-size: 16px;
+    padding-bottom: 1vh;
+  }
+}
+
+.mainFooter .footerPartnership {
+  width: 6.5%;
+  margin-right: auto;
+  max-lines: auto;
+  display: flex;
+  flex-direction: column;
+  h6 {
+    font-size: 15px;
+    padding-bottom: 3vh;
+  }
+  span {
+    color: #8b96a5;
+    font-size: 16px;
+    padding-bottom: 1vh;
+  }
+}
+.mainFooter .footerInformation {
+  width: 6.5%;
+  margin-right: auto;
+  max-lines: auto;
+  display: flex;
+  flex-direction: column;
+  h6 {
+    font-size: 15px;
+    padding-bottom: 3vh;
+  }
+  span {
+    color: #8b96a5;
+    font-size: 16px;
+    padding-bottom: 1vh;
+  }
+}
+.mainFooter .footerForUsers {
+  width: 6.5%;
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  max-lines: auto;
+  h6 {
+    font-size: 15px;
+    padding-bottom: 3vh;
+    white-space: nowrap;
+  }
+  span {
+    color: #8b96a5;
+    font-size: 16px;
+    padding-bottom: 1vh;
+  }
+}
+.mainFooter .footerGetApp {
+  width: 6.5%;
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  max-lines: auto;
+  h6 {
+    font-size: 15px;
+    padding-bottom: 3vh;
+  }
+  img {
+    padding-bottom: 1vh;
+  }
+}
+
+.bottomFooter {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70px;
+  background-color: #dee2e7;
+  width: 100%;
+  .footerLanguage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      margin-right: 5px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .footerBrand {
+    display: none;
+  }
+}

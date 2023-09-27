@@ -1,0 +1,108 @@
+.PLmain {
+  background: var(--gray-100, #f7fafc);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  .PLcontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--gray-100, #f7fafc);
+    border-radius: 5px;
+    .PLbox {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: var(--gray-100, #f7fafc);
+      li {
+        display: flex;
+        width: 100%;
+        list-style-type: none;
+        border: 1px solid rgb(211, 217, 225);
+        border-radius: 5px;
+        background: white;
+        .PLpriceDescription {
+          .PLitemName {
+            cursor: pointer;
+            color: var(--dark, #1c1c1c);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 22px;
+          }
+          padding: 15px;
+          .PLraitings {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 10px 0;
+            h5 {
+              color: #00b517;
+            }
+            span {
+              color: var(--base-color-orange, #ff9017);
+            }
+          }
+        }
+        .PLprice {
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 22px;
+          margin-top: 10px;
+        }
+        .PLdescription {
+          color: var(--gray-500, #54565a);
+          font-size: 14px;
+          span {
+            color: blue;
+            cursor: pointer;
+          }
+        }
+      }
+      img {
+        width: 160px;
+        height: 180px;
+        margin: 15px;
+        border-radius: 10px;
+      }
+      .CCviewDetails {
+        color: var(--base-color-blue, #0d6efd);
+        font-weight: 500;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+
+.PLviewDetails {
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+  .CCremove {
+    color: #FA3434;
+    font-weight: 600;
+  }
+
+.PLpageButtonsContainer {
+  gap: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#addtocart {margin: 10px;}
+@media (max-width: 650px) {
+  .PLdescription {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .PLraitings {
+    display: none;
+  }
+}

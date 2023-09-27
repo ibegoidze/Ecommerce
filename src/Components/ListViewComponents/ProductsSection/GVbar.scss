@@ -1,0 +1,47 @@
+.GVmain {
+  border: 1px solid rgb(211, 217, 225);
+  border-radius: 5px;
+  .GVcontainer {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    .GVleftSide {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
+      margin-left: 15px;
+      color: var(--dark, #1c1c1c);
+      p {font-weight: 600;}
+    }
+    .GVrightSide {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        input {
+            width: 15px;
+            height: 15px;
+        }
+        .GVtoLV {
+            display: flex;
+            margin-right: 15px;
+            border: 1px solid rgb(211, 217, 225);
+
+            border-radius: 5px;
+            .GVLV {
+                background-color: #DEE2E7;
+                width: 100%;
+                height: 100%;
+                padding: 5px;
+                cursor: pointer;
+            }
+            .GVGV {
+                padding: 5px;
+                border-right:1px solid rgb(211, 217, 225) ;
+                cursor: pointer;
+            }
+        }
+    }
+  }
+}

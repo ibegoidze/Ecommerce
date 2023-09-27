@@ -1,0 +1,71 @@
+.SImain {
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  background-color: white;
+  .SIsally {
+    width: 15%;
+  }
+  .SIleftSide {
+    width: 25%;
+    .SIheader {
+      font-size: 50px;
+      font-weight: 700;
+      color: #000;
+      margin-top: 100px;
+    }
+    .SIleftp {
+      color: #000;
+      font-weight: 600;
+      font-size: 35px;
+      margin-bottom: 50px;
+    }
+    .SIregister {
+      color: #000;
+      font-weight: 400;
+      font-size: 16px;
+      span {
+        color: #4d47c3;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+  }
+  .SIrightSide {
+    background-color: white;
+    border-radius: 10px;
+    width: 300px;
+    h2 {
+      font-size: 30px;
+      margin: 25px 0;
+    }
+    div {
+      margin: 20px 0;
+      input {
+        background: #aecef8;
+        outline: none;
+        border: none;
+        width: 100%;
+        height: 30px;
+        border-radius: 10px;
+        padding: 20px 10px;
+        margin: 10px 0;
+      }
+      input::placeholder {
+        color: #7978ca;
+      }
+    }
+    p {
+      color: #757575;
+      margin: 0 15px;
+    }
+    button {
+      width: 100%;
+      margin: 20px 0;
+      color: #4d47c3;
+      font-weight: 600;
+    }
+  }
+}

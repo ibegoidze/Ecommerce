@@ -1,0 +1,74 @@
+.SBMain {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  .SBcontainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid rgb(211, 217, 225);
+    border-radius: 5px;
+    .SBheader {
+      padding: 5px 5px 20px 5px;
+      border-bottom: 1px solid rgb(211, 217, 225);
+      display: flex;
+      gap: 15px;
+      margin: 10px;
+      .SBRbox {
+        background: #c6f3f1;
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      h3 {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        color: var(--dark, #1c1c1c);
+      }
+    }
+    .SBSt {
+      display: flex;
+      padding: 5px 5px 20px 5px;
+      margin: 10px;
+      gap: 15%;
+      .SBsvgs {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .SBspans {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        color: var(--gray-500, #8b96a5);
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.SBbuttons {
+  margin: 0 auto;
+  width: 90%;
+  .SBSIbutton {
+    width: 100%;
+    background: var(
+      --primary-gradient,
+      linear-gradient(180deg, #127fff 0%, #0067ff 100%)
+    );
+    color: white;
+    font-size: 16px;
+    font-weight: 550;
+  }
+  .SBSPbuttonn {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 550;
+    margin-bottom: 20px;
+  }
+}

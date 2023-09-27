@@ -1,0 +1,51 @@
+.RImain {
+  background: var(--gray-100, #f7fafc);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  .RIcontainer {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    background: var(--gray-100, #f7fafc);
+    border-radius: 5px;
+    .RIbox {
+      display: flex;
+      background: white;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 25px;
+      background: var(--gray-100, #f7fafc);
+      li {
+        width: 18.2%;
+        list-style-type: none;
+        border: 1px solid rgb(211, 217, 225);
+        border-radius: 5px;
+        background: white;
+        .RIimg {
+          display: flex;
+          justify-content: center;
+        }
+        .RIprice {
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 22px;
+          margin: 20px 0 10px 20px;
+        }
+        .RIdescription {
+            color: var(--gray-500, #8B96A5);
+            font-size: 14px;
+            margin: 0 0 20px 20px;
+        }
+      }
+      img {
+        width: 80%;
+        height: 180px;
+        margin-top: 15px;
+      }
+    }
+  }
+}

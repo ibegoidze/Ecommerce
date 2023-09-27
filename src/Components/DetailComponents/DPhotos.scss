@@ -1,0 +1,18 @@
+.PVimages {
+    width: 30.3%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 0 10px;
+    .PVmainPhoto {
+      object-fit: fill;
+      
+      height: 100%;
+      width: 100%;
+      border: 1px solid rgb(211, 217, 225);
+      border-radius: 5px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }

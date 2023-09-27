@@ -1,0 +1,59 @@
+.PRSmain {
+  border-top: 1px solid rgb(211, 217, 225);
+  margin-right: 10px;
+  .PRSheading {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  h4 {
+    color: #1c1c1c;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+.PRSslider {
+  width: 90%;
+}
+
+.PRSrangeInputs {
+  display: flex;
+  flex-direction: column;
+  
+  input {
+    margin-right: 10px;
+    width: 45%;
+    margin-top: 10px;
+    height: 35px;
+    stroke: var(--gray-300, #dee2e7);
+    border: 1px solid rgb(211, 217, 225);
+    border-radius: 5px;
+  }
+}
+
+
+.PRSbuttonDiv {
+    display: flex;
+    justify-content: center;
+}
+button {
+    display: inline-flex;
+    height: 40px;
+    padding: 0px 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 1px solid var(--gray-300, #dee2e7);
+    background: var(--white, #fff);
+    box-shadow: 0px 1px 2px 0px rgba(56, 56, 56, 0.08);
+    color: #0D6EFD;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    cursor: pointer;
+  }

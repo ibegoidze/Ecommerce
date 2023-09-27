@@ -1,0 +1,69 @@
+.Dmain {
+  background-color: white;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  border: 1px solid rgb(211, 217, 225);
+  margin-left: auto;
+  margin-right: auto;
+  .Dcontainer {
+    display: flex;
+    flex-direction: column;
+    .Dbar {
+      display: flex;
+      border-bottom: 1px solid rgb(211, 217, 225);
+      gap: 30px;
+      .Dsingle {
+        padding: 20px;
+        height: 100%;
+        color: var(--gray-500, #8b96a5);
+        font-weight: 500;
+        font-size: 16px;
+        text-align: center;
+      }
+      .Dsingle:hover {
+        border-bottom: 1px solid rgb(43, 126, 235);
+        color: rgb(43, 126, 235);
+        font-weight: 550;
+      }
+    }
+    .Dinformation {
+      padding: 20px;
+      color: var(--gray-600, #505050);
+    }
+  }
+}
+
+.Dlist {
+  margin: 20px;
+  display: flex;
+  .DlistSingle {
+    display: flex;
+    flex-direction: column;
+    .DrightS {
+        border: 1px solid rgb(211, 217, 225);
+        padding:10px 120px 10px 10px;
+        background: var(--gray-200, #EFF2F4);
+        color: var(--gray-600, #505050);
+    }
+    .DleftS {
+        border: 1px solid rgb(211, 217, 225);
+        padding:10px 120px 10px 10px;
+        color: var(--gray-600, #505050);
+    }
+  }
+}
+
+
+.Dlast {
+    margin: 20px;
+    
+    .DsingleLast {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px;
+        color: var(--gray-600, #505050);
+    }
+}

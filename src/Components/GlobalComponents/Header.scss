@@ -1,0 +1,116 @@
+@import "../../Main.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:focus {
+  outline: none;
+}
+
+.header {
+  width: 100%;
+  border-bottom: 1px solid rgb(211, 217, 225);
+  height: 86px;
+  display: flex;
+  align-items: center;
+  .headerDiv {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    // border-bottom: 1px solid rgb(211, 217, 225);
+    .brandLogo {
+      width: 10%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      span {
+        cursor: pointer;
+        min-width: 30px;
+      }
+      .brandSpan {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+.searchContainer {
+  width: 36%;
+  .searchDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-wrap: nowrap;
+    input {
+      width: 75%;
+      font-size: 16px;
+      padding: 9px 8px;
+      border: 2px solid #0d6efd;
+      border-radius: 7px 0 0 7px;
+    }
+    input::placeholder {
+      color: rgba(139, 150, 165, 1);
+      font-size: 1em;
+      text-transform: capitalize;
+    }
+    button {
+      width: 25%;
+      padding: 15px 8px;
+      min-width: 80px;
+      font-size: 16px;
+      border: 0;
+      color: white;
+      background: linear-gradient(180deg, #127fff 0%, #0067ff 100%);
+      border: 2px solid #0d6efd;
+      border-radius: 0 7px 7px 0;
+      cursor: pointer;
+      margin-top: 0px;
+    }
+  }
+}
+
+.navigation {
+  width: 20%;
+  margin-right: 5px;
+  .navigationUl {
+    display: flex;
+    width: 100%;
+    .navigationLi {
+      display: flex;
+      align-items: flex-end;
+      width: 25%;
+      min-width: 50px;
+      .navigationItemContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        img {
+          width: 20px;
+          display: block;
+        }
+        span {
+          display: inline-block;
+          width: 100%;
+          white-space: nowrap;
+          font-size: 12px;
+          text-align: center;
+          margin-top: 7px;
+          color: rgba(139, 150, 165, 1);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .searchContainer {
+    display: none;
+  }
+}

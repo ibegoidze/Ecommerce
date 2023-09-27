@@ -1,0 +1,41 @@
+.LVmain {
+  background: var(--gray-100, #f7fafc);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  .LVcontainer {
+    background: white;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+
+    border-radius: 5px;
+    .LVfilterSection {
+      width: 20%;
+      background: var(--gray-100, #f7fafc);
+      // height: 80%;
+
+    }
+    .LVproductSection {      
+        //  height: 100%;
+         width: 80%;
+      .LVGVbar {
+        width: 100%;
+      }
+      .LVproductsList {
+        // height: 400px;
+        background: var(--gray-100, #f7fafc);
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .LVfilterSection {
+    display: none;
+  }
+}

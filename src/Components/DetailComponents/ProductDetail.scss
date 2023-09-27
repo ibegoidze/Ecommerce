@@ -1,0 +1,114 @@
+.PDmain {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  .PDinstock {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--base-color-green, #00b517);
+    font-size: 16px;
+    font-weight: 450;
+    line-height: 24px;
+  }
+  .DPproductName {
+    color: #1c1c1c;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+  }
+  .DPraitingBar {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    p {
+      color: var(--base-color-orange, #ff9017);
+    }
+    span {
+      color: var(--base-color-gray-500, #787a80);
+    }
+  }
+}
+
+.DPorangeBar {
+  display: flex;
+  align-items: center;
+  background-color: #fff0df;
+  margin-top: 15px;
+  height: 80px;
+  .DPOBsingle {
+    width: 25%;
+    border-right: 1px solid #bdc1c8;
+    margin: 10px 0 10px 10px;
+    h5 {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    span {
+      color: var(--base-color-gray-800, #606060);
+      font-size: 13px;
+      font-weight: 400;
+    }
+  }
+}
+
+.DPpriceBar {
+    display: flex;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E0E0E0;
+    p {
+        width: 27%;
+        color: var(--gray-500, #8B96A5);
+    }
+    span {
+        color: var(--gray-600, #505050);
+    }
+}
+
+.DPtypeBar {
+    display: flex;
+    margin-top: 10px;
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 10px;
+    .DPTB {
+        gap: 10px;
+        width: 27%;
+        display: flex;
+        flex-direction: column;
+        color: var(--gray-500, #8B96A5);
+    }
+    .DPDB {
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        color: var(--gray-600, #505050);
+    }
+}
+
+.DPtypeBar2 {
+    display: flex;
+    margin-top: 10px;
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 10px;
+    .DPTB2 {
+        gap: 27px;
+        width: 27%;
+        display: flex;
+        flex-direction: column;
+        color: var(--gray-500, #8B96A5);
+    }
+    .DPDB2 {
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+        color: var(--gray-600, #505050);
+    }
+}

@@ -4,7 +4,7 @@ export const productsData = createAsyncThunk(
   "products/productsData",
   async () => {
     return fetch(
-      "http://digital-amazon-test.somee.com/api/product/products"
+      "https://amazon-digital-prod.azurewebsites.net/api/product/products"
     ).then((res) => res.json().catch((e) => console.log(e)));
   }
 );
@@ -19,12 +19,11 @@ const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    // actionები 
     clearProducts: (state) => {
       state.items = [];
     },
     removeProducts: (state, action) => {
-      state.items = state.items.fillter((item) => item.id !== action.payload); // idის მიხედვით ვშლით თითო პროდუქტს
+      state.items = state.items.fillter((item) => item.id !== action.payload);
     },
   },
   extraReducers: {
@@ -39,10 +38,11 @@ const productsSlice = createSlice({
     },
     [productsData.rejected]: (state, data) => {
       state.isLoading = false;
-      state.error = data.payload; // აქ გავნსაზღვრავთ შემდეგ errorს data.payload.error
+      state.error = data.payload;
     },
   },
 });
+
 
 export const { clearProducts, removeProducts } = productsSlice.actions;
 

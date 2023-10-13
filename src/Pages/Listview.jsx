@@ -20,6 +20,7 @@ const Listview = () => {
   }, [dispatch]);
   const { products } = useSelector((state) => state.products);
 
+
   const [searchParams, setSearchParams] = useSearchParams();
   const params = Object.fromEntries([...searchParams]);
 
@@ -36,7 +37,6 @@ const Listview = () => {
       return item.categoryId === params.category;
     });
   }
-  // Price Range Filter Logic
 
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
@@ -51,6 +51,12 @@ const Listview = () => {
     return itemPrice >= minPrice && itemPrice <= maxPrice;
   });
 
+
+  const [dataFromProductsList, setDataFromProductsList] = useState(null)
+  const handleDataFromProductsList = (productsNumber) => {
+    setDataFromProductsList(productsNumber)
+  }
+
   return (
     <div className="LVmain">
       <div className="LVcontainer">
@@ -62,8 +68,8 @@ const Listview = () => {
         </div>
         <div className="LVproductSection">
           <div className="LVGVbar">
-            <GVbar />
-            <ProductsList currentProducts={currentProducts} />
+            <GVbar dataFromParent={dataFromProductsList}/>
+            <ProductsList currentProducts={currentProducts} sendDataToParent={handleDataFromProductsList} />
           </div>
           <div className="LVproductsList"></div>
         </div>

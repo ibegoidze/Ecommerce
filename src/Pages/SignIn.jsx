@@ -4,7 +4,6 @@ import "../Components/SigninComponents/SignIn.scss";
 import { useState } from "react";
 
 import sally from "../images/Saly-14.png"
-import freddy from "../images/Group 31.png"
 
 const SignIn = () => {
   const [currentForm, setCurrentForm] = useState("login");

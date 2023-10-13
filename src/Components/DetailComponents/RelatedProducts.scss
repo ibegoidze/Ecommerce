@@ -1,47 +1,50 @@
 .RPmain {
   background-color: white;
-  display: flex;
   margin-top: 10px;
   border: 1px solid rgb(211, 217, 225);
   border-radius: 5px;
   .RPcontainer {
-
     width: 100%;
     border: 1px solid rgb(211, 217, 225);
     padding: 20px;
     .RPheader {
-        font-weight: 700;
-        font-size: 18px;
-        color: var(--dark, #1C1C1C);
-        line-height: 28px;
-        margin: 10px 0;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--dark, #1c1c1c);
+      line-height: 28px;
+      margin: 10px 0;
     }
     .RPsingleBox {
-        list-style-type: none;
+      list-style-type: none;
+      display: flex; 
+      justify-content: space-around;
+      .RPimageDiv {
+        background-color: #eeeeee;
         display: flex;
         justify-content: center;
-        gap: 25px;
-        .RPimageDiv {
-            background-color: #EEEEEE;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-        }
-        img {
-            width: 150px;
-            padding: 5px;
-            border:1px solid #EEEEEE ;
-            border-radius: 10px;
-        }
-        .RPname {
-            color: var(--gray-600, #505050);
-            font-weight: 400;
-        }
-        .RPprice {
-            color: var(--gray-500, #8B96A5);
-            font-weight: 400;
-        }
+        align-items: center;
+        border-radius: 10px;
+      }
+      img {
+        width: 150px;
+        padding: 5px;
+        border: 1px solid #eeeeee;
+        border-radius: 10px;
+      }
+      .RPname {
+        color: var(--gray-600, #505050);
+        font-weight: 400;
+      }
+      .RPprice {
+        color: var(--gray-500, #8b96a5);
+        font-weight: 400;
+      }
     }
   }
+}
+
+@media (max-width: 1000px) {
+    .RPsingleBox {
+        flex-wrap: wrap;
+    }
 }

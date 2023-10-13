@@ -1,3 +1,6 @@
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import "./Header.scss";
 import profile from "../../images/profile.png";
 import heart from "../../images/Heart.png";
@@ -6,11 +9,15 @@ import cart from "../../images/Cart.png";
 import logo from "../../images/logo-symbol.png";
 import Brand from "../../images/Brand.png";
 
-import { useNavigate } from "react-router-dom";
-
-
 const Header = () => {
   const navigate = useNavigate();
+  const cartItems = useSelector((state) => state.cartItems.cartItems);
+  const quantity = cartItems.reduce((totalQuantity, item) => {
+    return totalQuantity + item.quantity;
+  }, 0);
+
+  console.log(quantity)
+
   return (
     <header className="header">
       <div className="headerDiv">
@@ -33,38 +40,42 @@ const Header = () => {
             <li className="navigationLi">
               <div
                 className="navigationItemContainer"
+                onClick={() => navigate("/")}
+              >
+                <img src={heart} alt="heart logo" />
+                <span className="textSpan">Main</span>
+              </div>
+            </li>
+
+            <li className="navigationLi">
+              <div
+                className="navigationItemContainer"
+                onClick={() => navigate("/Listview")}
+              >
+                <img src={message} alt="message logo" />
+                <span className="textSpan">Products</span>
+              </div>
+            </li>
+            <li className="navigationLi">
+              <div
+                className="navigationItemContainer"
                 onClick={() => navigate("SignIn")}
               >
                 <img src={profile} alt="profile logo" />
-                <span className="textSpan">Profile</span>
+                <span className="textSpan">Sign in</span>
               </div>
             </li>
             <li className="navigationLi">
-              <div
-                className="navigationItemContainer"
-                onClick={() => navigate("/")}
-              >
-                <img src={message} alt="message logo" />
-                <span className="textSpan">Message</span>
-              </div>
-            </li>
-            <li className="navigationLi">
-              <div
-                className="navigationItemContainer"
-                onClick={() => navigate("Cart")}
-              >
-                <img src={heart} alt="heart logo" />
-                <span className="textSpan">Orders</span>
-              </div>
-            </li>
-            <li className="navigationLi">
-              <div
+              <div 
                 className="navigationItemContainer"
                 onClick={() => navigate("Cart")}
               >
                 <img src={cart} alt="cart logo" />
-                <span className="textSpan">My cart</span>
+                <span className="textSpan">Cart</span>
               </div>
+              {quantity > 0 && (
+                  <span className="cartBadge"><div className="asdawfawfawg">{quantity}</div></span>
+                )}
             </li>
           </ul>
         </div>

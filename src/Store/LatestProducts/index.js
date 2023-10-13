@@ -4,7 +4,7 @@ export const latestProductsData = createAsyncThunk(
   "latestProducts/latestProductsData",
   async () => {
     return fetch(
-      "http://digital-amazon-test.somee.com/api/product/latestproducts")
+      "https://amazon-digital-prod.azurewebsites.net/api/product/latestproducts")
       .then((res) => res.json()).catch((e) => console.log(e));
   }
 );
@@ -30,7 +30,7 @@ const latestProductsSlice = createSlice({
     },
     [latestProductsData.rejected]: (state) => {
       state.isLoading = false;
-      state.error = []; // აქ გავნსაზღვრავთ შემდეგ errorს data.payload.error
+      state.error = [];
     },
   },
 });

@@ -10,7 +10,7 @@ const Register = () => {
 
     try {
       const response = await fetch(
-        "https://digitalamazonproject.azurewebsites.net/api/user/registerUser",
+        "https://amazon-digital-prod.azurewebsites.net/api/user/registerUser",
         {
           method: "POST",
           headers: {

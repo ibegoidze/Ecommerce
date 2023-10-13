@@ -83,18 +83,29 @@
   cursor: pointer;
 }
 
-  .CCremove {
-    color: #FA3434;
-    font-weight: 600;
-  }
+.CCremove {
+  color: #fa3434;
+  font-weight: 600;
+}
 
 .PLpageButtonsContainer {
   gap: 10px;
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
-#addtocart {margin: 10px;}
+.AddToCartPopup {
+  background-color: #9df5a9;
+  border-radius: 10px;
+
+  P {
+    padding: 5px;
+  }
+}
+
+#addtocart {
+  margin: 10px;
+}
 @media (max-width: 650px) {
   .PLdescription {
     display: none;

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const offersData = createAsyncThunk("offers/offersData", async () => {
-  return fetch("http://digital-amazon-test.somee.com/api/product/offers")
+  return fetch("https://amazon-digital-prod.azurewebsites.net/api/product/offers")
     .then((res) => res.json())
     .catch((e) => console.log(e));
 });
@@ -27,7 +27,7 @@ const offersSlice = createSlice({
     },
     [offersData.rejected]: (state) => {
       state.isLoading = false;
-      state.error = []; // აქ გავნსაზღვრავთ შემდეგ errorს data.payload.error
+      state.error = []; 
     },
   },
 });

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { categoriesData } from "../../Store/Categories/index";
+import { useNavigate } from "react-router-dom";
 
 import personIcon from "../../images/SoImages/personIcon.png.png";
 
@@ -12,6 +13,7 @@ const SectionOne = () => {
     dispatch(categoriesData()); // 12
   }, [dispatch]);
 
+  const navigate = useNavigate()
   const { categories } = useSelector((state) => state.categories);
 
   return (
@@ -37,15 +39,15 @@ const SectionOne = () => {
           <div className="SofirstBox">
             <div className="SoIconText">
               <img src={personIcon} alt="person icon" />
-              <span>
+              <span >
                 Hi user <br /> let's get started
               </span>
             </div>
             <div>
-              <button className="SoJoinNow">Join now</button>
+              <button onClick={() => navigate("/Signin")} className="SoJoinNow">Join now</button>
             </div>
             <div>
-              <button className="SoLogIn">Log in</button>
+              <button onClick={() => navigate("/Signin")} className="SoLogIn">Log in</button>
             </div>
           </div>
           <div className="SoSecondBox">

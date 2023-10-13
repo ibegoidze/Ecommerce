@@ -4,7 +4,7 @@ export const SingleProductData = createAsyncThunk(
   "SingleProduct/SingleProductData",
   async (id) => {
     return fetch(
-      `http://digital-amazon-test.somee.com/api/product/products/${id}`
+      `https://amazon-digital-prod.azurewebsites.net/api/product/products/${id}`
     )
       .then((res) => res.json())
       .catch((e) => console.log(e));
@@ -34,7 +34,7 @@ const SingleProductSlice = createSlice({
     },
     [SingleProductData.rejected]: (state) => {
       state.isLoading = false;
-      state.error = []; // აქ გავნსაზღვრავთ შემდეგ errorს data.payload.error
+      state.error = [];
     },
   },
 });

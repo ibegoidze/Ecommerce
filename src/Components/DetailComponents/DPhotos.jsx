@@ -1,13 +1,14 @@
 import React from "react";
 import "./DPhotos.scss";
-import PVphoto from "../../images/image 34.png";
 import { useRef } from "react";
 
-const DPhotos = ({ SingleProduct }) => {
+const DPhotos = ({ SingleProduct, product }) => {
   const mainImageRef = useRef();
   const handlePicture = (src) => {
     mainImageRef.current.src = src
   };
+
+  console.log(SingleProduct, product)
 
   return (
     <div className="PVimages">

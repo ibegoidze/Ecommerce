@@ -19,8 +19,6 @@ import SubscribeBar from "../Components/MainComponents/SubscribeBar";
 import StPicOne from "../images/image92.png";
 import StPicTwo from "../images/image98.png";
 
-// import components
-
 const Main = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -37,6 +35,9 @@ const Main = () => {
     (state) => state.mostDemandProducts
   );
 
+  console.log(products);
+  console.log(latestProducts);
+  console.log(mostDemandProducts);
 
   return (
     <div>
@@ -55,9 +56,9 @@ const Main = () => {
         title={"Most demand products"}
       />
       <SendMail />
-      <RIheader text={"Recomended Items"}/>
+      <RIheader text={"Recomended Items"} />
       <RecomendedItems />
-      <RIheader text={"Our extra services"}/>
+      <RIheader text={"Our extra services"} />
       <ExtraServices />
       <SubscribeBar />
     </div>

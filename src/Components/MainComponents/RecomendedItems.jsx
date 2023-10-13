@@ -3,6 +3,7 @@ import "./RecomendedItems.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { productsData } from "../../Store/Products/index";
+import { Link } from "react-router-dom";
 
 const RecomendedItems = () => {
   const dispatch = useDispatch();
@@ -18,12 +19,12 @@ const RecomendedItems = () => {
           {RIproducts.map((item) => {
             return (
               <li key={item.id}>
-                <div className="RIimg">
+                <Link className="RIimg" to={`/Detail/${item.id}`}>
                   <img src={item.images} alt="product image" />
-                </div>
+                  </Link>
                 <div className="RIprice">${item.price}</div>
                 <div className="RIdescription">
-                  {item.description.slice(0, 30)}...see more
+                  {item.description.slice(0, 30)}<Link to={`/Detail/${item.id}`}>...see more</Link>
                 </div>
               </li>
             );

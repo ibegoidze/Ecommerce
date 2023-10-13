@@ -15,8 +15,9 @@
     .RIbox {
       display: flex;
       background: white;
-      width: 100%;
+      // width: 100%;
       flex-wrap: wrap;
+      display: flex;
       gap: 25px;
       background: var(--gray-100, #f7fafc);
       li {
@@ -47,5 +48,12 @@
         margin-top: 15px;
       }
     }
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .RIbox {
+    flex-wrap: wrap;
   }
 }

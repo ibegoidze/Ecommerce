@@ -4,7 +4,7 @@ export const categoriesData = createAsyncThunk(
   "categories/categoriesData",
   async () => {
     return fetch(
-      "http://digital-amazon-test.somee.com/api/product/categories")
+      "https://amazon-digital-prod.azurewebsites.net/api/product/categories")
       .then((res) => res.json()).catch((e) => console.log(e));
   }
 );
@@ -30,7 +30,7 @@ const categoriesSlice = createSlice({
     },
     [categoriesData.rejected]: (state) => {
       state.isLoading = false;
-      state.error = []; // აქ გავნსაზღვრავთ შემდეგ errorს data.payload.error
+      state.error = []; 
     },
   },
 });

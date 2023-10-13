@@ -1,12 +1,12 @@
 import React from "react";
 import "./GVbar.scss";
 
-const GVbar = () => {
+const GVbar = ({ dataFromParent}) => {
   return (
     <div className="GVmain">
       <div className="GVcontainer">
         <div className="GVleftSide">
-          11.142 items in <p> Mobile accessory</p>
+          {dataFromParent} items in <p> Products list</p>
         </div>
         <div className="GVrightSide">
           <input type="checkbox" id={Math.random()} /> Verified only

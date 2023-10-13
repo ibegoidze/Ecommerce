@@ -2,16 +2,12 @@ import React from "react";
 import "./PDSection.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import DPhotos from "./DPhotos";
 import ProductDetail from "./ProductDetail";
 import SupplierBox from "./SupplierBox";
-
 import DescriptionSection from "./DescriptionSection";
 import YouMayLike from "./YouMayLike";
-
 import RelatedProducts from "./RelatedProducts";
-
 import { offersData } from "../../Store/Offers/index";
 import { latestProductsData } from "../../Store/LatestProducts/index";
 import { useParams } from "react-router-dom";
@@ -28,17 +24,17 @@ const DPSection = () => {
   const { latestProducts } = useSelector((state) => state.latestProducts);
   const { SingleProduct, images } = useSelector((state) => state.SingleProduct);
 
-  console.log(images);
 
   const { id } = useParams();
   useEffect(() => {
     dispatch(SingleProductData(id));
   }, [dispatch, id]);
 
+
   return (
     <div className="PVmain">
       <div className="PVcontainer">
-        <DPhotos SingleProduct={images} />
+        <DPhotos product={SingleProduct} SingleProduct={images} />
         <ProductDetail SingleProduct={SingleProduct} />
         <SupplierBox />
       </div>

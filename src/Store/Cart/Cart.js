@@ -2,29 +2,151 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cartItems: [],
-  isLoading: [],
-  error: [],
+  isLoading: false,
+  error: null,
 };
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: "cartItems",
   initialState,
   reducers: {
-    addToCart: (state, action) => {
-      return {
-        ...state,
-        cartItems: [...state.cartItems, action.payload],
-      };
+    addToCartStart: (state) => {
+      state.isLoading = true;
+      state.error = null;
     },
-    removeFromCart: (state, action) => {
-        state.cartItems = state.cartItems.filter(
-          (item) => item.id !== action.payload
-        );
+    addToCartSuccess: (state, action) => {
+      state.isLoading = false;
+      // const { id, quantity } = action.payload;
+      // const existingItem = state.cartItems.find((item) => item.id === id);
+      // state.cartItems.push(action.payload);
+      // console.log(action.payload);
     },
-    // Add more actions like updateQuantity, clearCart, etc. as needed
+    addToCartFailure: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    removeFromCartStart: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    removeFromCartSuccess: (state, action) => {
+      state.isLoading = false;
+    },
+    removeFromCartFailure: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    clearCart: (state) => {
+      state.cartItems = [];
+    },
+    getCartProductsStart: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    getCartProductsSuccess: (state, action) => {
+      state.isLoading = false;
+      state.cartItems = action.payload;
+    },
+    getCartProductsFailure: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const {
+  addToCartStart,
+  addToCartSuccess,
+  addToCartFailure,
+  removeFromCartStart,
+  removeFromCartSuccess,
+  removeFromCartFailure,
+  clearCart,
+  getCartProductsStart,  
+  getCartProductsSuccess,
+  getCartProductsFailure,
+} = cartSlice.actions;
+
+export const addToCart = (product) => async (dispatch) => {
+  dispatch(addToCartStart());
+  try {
+    const token = JSON.parse(localStorage.getItem("token"));
+    const response = await fetch(
+      "https://amazon-digital-prod.azurewebsites.net/api/cart/addincart",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productId: product.id }),
+      }
+    );
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(addToCartSuccess(product));
+    } else {
+      const errorData = await response.json();
+      dispatch(addToCartFailure(errorData));
+    }
+  } catch (error) {
+    dispatch(addToCartFailure("An error occurred while adding to cart."));
+  }
+};
+
+export const removeFromCart = (productId) => async (dispatch) => {
+  dispatch(removeFromCartStart());
+  try {
+    const token = JSON.parse(localStorage.getItem("token"));
+    const response = await fetch(
+      "https://amazon-digital-prod.azurewebsites.net/api/cart/removefromcart",
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productId }),
+      }
+    );
+    if (response.ok) {
+      dispatch(removeFromCartSuccess(productId));
+    } else {
+      const errorData = await response.json();
+      dispatch(removeFromCartFailure(errorData));
+    }
+  } catch (error) {
+    dispatch(
+      removeFromCartFailure("An error occurred while removing from the cart.")
+    );
+  }
+};
+
+export const getCartProducts = () => async (dispatch) => {
+  try {
+    const token = JSON.parse(localStorage.getItem("token"));
+    const response = await fetch(
+      "https://amazon-digital-prod.azurewebsites.net/api/cart/getmycartproducts",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (response.ok) {
+      const data = await response.json();
+      console.log(response)
+      dispatch(getCartProductsSuccess(data));
+    } else {
+      const errorData = await response.json();
+      dispatch(getCartProductsFailure(errorData));
+    }
+  } catch (error) {
+    dispatch(getCartProductsFailure("An error occurred while fetching cart products."));
+  }
+};
+
 
 export default cartSlice.reducer;

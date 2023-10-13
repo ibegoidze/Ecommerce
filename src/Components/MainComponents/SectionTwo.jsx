@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { offersData } from "../../Store/Offers/index";
+import { Link } from "react-router-dom";
 
 import "./SectionTwo.scss";
 
@@ -43,8 +44,9 @@ const SectionTwo = () => {
               <li key={item.id}>
                 <div>
                   <img src={item.image} />
+
                 </div>
-                <div className="StItemName">item name</div>
+                <div className="StItemName">{item.name.slice(0, 10)}</div>
                 <div className="StSalePrice">
                   {Math.round(100 - (item.newPrice * 100) / item.oldPrice)}%
                 </div>

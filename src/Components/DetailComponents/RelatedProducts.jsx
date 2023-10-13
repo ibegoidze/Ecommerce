@@ -3,12 +3,10 @@ import "./RelatedProducts.scss";
 
 const RelatedProducts = ({latestProducts}) => {
 
-    console.log(latestProducts)
-
   return (
     <div className="RPmain">
       <div className="RPcontainer">
-        <div className="RPheader">Related products</div>
+        <p className="RPheader">Related products</p>
         <div className="RPsingleBox">
             {latestProducts.map((item) => {
                 return (

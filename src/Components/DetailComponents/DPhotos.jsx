@@ -8,7 +8,6 @@ const DPhotos = ({ SingleProduct, product }) => {
     mainImageRef.current.src = src
   };
 
-  console.log(SingleProduct, product)
 
   return (
     <div className="PVimages">

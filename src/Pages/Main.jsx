@@ -35,9 +35,6 @@ const Main = () => {
     (state) => state.mostDemandProducts
   );
 
-  console.log(products);
-  console.log(latestProducts);
-  console.log(mostDemandProducts);
 
   return (
     <div>

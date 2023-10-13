@@ -16,10 +16,6 @@ const cartSlice = createSlice({
     },
     addToCartSuccess: (state, action) => {
       state.isLoading = false;
-      // const { id, quantity } = action.payload;
-      // const existingItem = state.cartItems.find((item) => item.id === id);
-      // state.cartItems.push(action.payload);
-      // console.log(action.payload);
     },
     addToCartFailure: (state, action) => {
       state.isLoading = false;
@@ -31,6 +27,7 @@ const cartSlice = createSlice({
     },
     removeFromCartSuccess: (state, action) => {
       state.isLoading = false;
+      state.cartItems = state.cartItems.filter((item) => item.productId !== action.payload);
     },
     removeFromCartFailure: (state, action) => {
       state.isLoading = false;
@@ -97,6 +94,7 @@ export const addToCart = (product) => async (dispatch) => {
 export const removeFromCart = (productId) => async (dispatch) => {
   dispatch(removeFromCartStart());
   try {
+    console.log('Removing product ID:', productId);
     const token = JSON.parse(localStorage.getItem("token"));
     const response = await fetch(
       "https://amazon-digital-prod.azurewebsites.net/api/cart/removefromcart",
@@ -137,7 +135,6 @@ export const getCartProducts = () => async (dispatch) => {
     );
     if (response.ok) {
       const data = await response.json();
-      console.log(response)
       dispatch(getCartProductsSuccess(data));
     } else {
       const errorData = await response.json();

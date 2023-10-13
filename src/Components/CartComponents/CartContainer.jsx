@@ -11,12 +11,12 @@ import { latestProductsData } from "../../Store/LatestProducts";
 function Cart() {
   const {cartItems} = useSelector((state) => state.cartItems);
 
-  console.log(cartItems);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleRemoveFromCart = (productId) => {
+    console.log('Removing product with ID:', productId);
     dispatch(removeFromCart(productId));
   };
 

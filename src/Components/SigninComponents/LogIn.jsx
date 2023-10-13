@@ -42,12 +42,19 @@ const LogIn = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setLoginSuccess(false); 
+    setSuccessMessage("Logged out successfully"); 
+  };
+
   return (
     <div>
       {loginSuccess ? (
         <div>
           <p>{successMessage}</p>
           <button onClick={() => navigate("/")}>Go to Main Page</button>
+          <button onClick={handleLogout}>Log Out</button>
         </div>
       ) : (
         <div>

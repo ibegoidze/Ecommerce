@@ -16,7 +16,6 @@ const Header = () => {
     return totalQuantity + item.quantity;
   }, 0);
 
-  console.log(quantity)
 
   return (
     <header className="header">

@@ -8,6 +8,8 @@ import GVbar from "../Components/ListViewComponents/ProductsSection/GVbar";
 import ProductsList from "../Components/ListViewComponents/ProductsSection/ProductsList";
 import { useState } from "react";
 import { productsData } from "../Store/Products";
+import { latestProductsData } from "../Store/LatestProducts";
+import { mostDemandProductsData } from "../Store/MostDemandProducts";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
@@ -17,14 +19,19 @@ const Listview = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(productsData());
+    dispatch(latestProductsData());
+    dispatch(mostDemandProductsData());
   }, [dispatch]);
   const { products } = useSelector((state) => state.products);
+  const { latestProducts } = useSelector((state) => state.latestProducts);
+  const { mostDemandProducts } = useSelector(state => state.mostDemandProducts);
 
+  const mergedArray = [...products, ...latestProducts, ...mostDemandProducts];
 
   const [searchParams, setSearchParams] = useSearchParams();
   const params = Object.fromEntries([...searchParams]);
 
-  let currentProducts = products;
+  let currentProducts = mergedArray;
 
   if (params.brand) {
     currentProducts = currentProducts.filter((item) => {
@@ -51,11 +58,10 @@ const Listview = () => {
     return itemPrice >= minPrice && itemPrice <= maxPrice;
   });
 
-
-  const [dataFromProductsList, setDataFromProductsList] = useState(null)
+  const [dataFromProductsList, setDataFromProductsList] = useState(null);
   const handleDataFromProductsList = (productsNumber) => {
-    setDataFromProductsList(productsNumber)
-  }
+    setDataFromProductsList(productsNumber);
+  };
 
   return (
     <div className="LVmain">
@@ -68,8 +74,11 @@ const Listview = () => {
         </div>
         <div className="LVproductSection">
           <div className="LVGVbar">
-            <GVbar dataFromParent={dataFromProductsList}/>
-            <ProductsList currentProducts={currentProducts} sendDataToParent={handleDataFromProductsList} />
+            <GVbar dataFromParent={dataFromProductsList} />
+            <ProductsList
+              currentProducts={currentProducts}
+              sendDataToParent={handleDataFromProductsList}
+            />
           </div>
           <div className="LVproductsList"></div>
         </div>

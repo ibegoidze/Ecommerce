@@ -25,8 +25,13 @@ const Listview = () => {
   const { products } = useSelector((state) => state.products);
   const { latestProducts } = useSelector((state) => state.latestProducts);
   const { mostDemandProducts } = useSelector(state => state.mostDemandProducts);
+  const newMostDemant = mostDemandProducts.slice(0, 2)
 
-  const mergedArray = [...products, ...latestProducts, ...mostDemandProducts];
+
+  const mergedArray = [...products, ...latestProducts, ...newMostDemant];
+
+
+  console.log(mostDemandProducts)
 
   const [searchParams, setSearchParams] = useSearchParams();
   const params = Object.fromEntries([...searchParams]);
@@ -63,6 +68,7 @@ const Listview = () => {
     setDataFromProductsList(productsNumber);
   };
 
+  console.log(mergedArray)
   return (
     <div className="LVmain">
       <div className="LVcontainer">

@@ -21,7 +21,6 @@ const Register = () => {
       );
       if (response.ok) {
         const data = await response.json();
-        console.log("Registration successful", data, name, email, password);
         alert("you registered successfully");
       } else {
         const errorData = await response.json();

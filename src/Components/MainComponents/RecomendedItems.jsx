@@ -3,28 +3,41 @@ import "./RecomendedItems.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { productsData } from "../../Store/Products/index";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const RecomendedItems = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(productsData()); // 5
-  }, [dispatch]);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const params = Object.fromEntries([...searchParams]);
+
   const { products } = useSelector((state) => state.products);
-  const RIproducts = products.slice(0, 10);
+
+  let asyncParams = {
+    category: params.category,
+    priceFrom: params.priceFrom,
+    priceTo: params.priceTo,
+  };
+  useEffect(() => {
+    dispatch(productsData(asyncParams)); // 5
+  }, [dispatch]);
+
+  // const RIproducts = products.slice(0, 10);
   return (
     <div className="RImain">
       <div className="RIcontainer">
         <div className="RIbox">
-          {RIproducts.map((item) => {
+          {products.map((item) => {
             return (
               <li key={item.id}>
                 <Link className="RIimg" to={`/Detail/${item.id}`}>
                   <img src={item.images} alt="product image" />
-                  </Link>
+                </Link>
                 <div className="RIprice">${item.price}</div>
                 <div className="RIdescription">
-                  {item.description.slice(0, 30)}<Link to={`/Detail/${item.id}`}>...see more</Link>
+                  {item.description.slice(0, 30)}
+                  <Link to={`/Detail/${item.id}`}>...see more</Link>
                 </div>
               </li>
             );

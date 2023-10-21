@@ -4,19 +4,22 @@ import "./CartContainer.scss";
 import { removeFromCart, clearCart, getCartProducts } from "../../Store/Cart/Cart";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import RelatedProducts from "../DetailComponents/RelatedProducts";
 import { latestProductsData } from "../../Store/LatestProducts";
 
 function Cart() {
-  const {cartItems} = useSelector((state) => state.cartItems);
+  const {cartItems, removeFromCartIsLoading} = useSelector((state) => state.cartItems);
 
+  
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const params = Object.fromEntries([...searchParams]);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleRemoveFromCart = (productId) => {
-    console.log('Removing product with ID:', productId);
     dispatch(removeFromCart(productId));
   };
 
@@ -24,14 +27,20 @@ function Cart() {
     dispatch(clearCart());
   };
 
+  let asyncParams = {
+    category: params.category,
+    priceFrom: params.priceFrom,
+    priceTo: params.priceTo,
+  };
+
   useEffect(() => {
-    dispatch(latestProductsData()); // 6
+    dispatch(latestProductsData(asyncParams)); // 6
   }, [dispatch]);
   const { latestProducts } = useSelector((state) => state.latestProducts);
 
   useEffect(() => {
     dispatch(getCartProducts())}
-  , [dispatch])
+  , [dispatch, removeFromCartIsLoading])
 
   const calculateTotalPrice = () => {
     const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);

@@ -2,7 +2,6 @@ import React from "react";
 import "./ProductDetail.scss";
 
 const ProductDetail = ({SingleProduct}) => {
-  console.log()
   return (
     <div className="PDmain">
       <div className="PDcontainer">

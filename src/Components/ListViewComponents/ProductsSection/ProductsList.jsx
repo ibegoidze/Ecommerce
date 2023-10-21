@@ -1,10 +1,14 @@
- import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductsList.scss";
 import { useSearchParams, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart, increaseQuantity } from "../../../Store/Cart/Cart";
+import { productsData } from "../../../Store/Products/index";
+import { useSelector } from "react-redux";
 
-const ProductsList = ({ currentProducts, sendDataToParent }) => {
+const ProductsList = ({ sendDataToParent }) => {
+  const { products } = useSelector((state) => state.products);
+
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,22 +16,28 @@ const ProductsList = ({ currentProducts, sendDataToParent }) => {
   const params = Object.fromEntries([...searchParams]);
   const [searchValue, setSearchValue] = useState("");
 
+  let data = products
+
   const productsPerPage = 4;
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  let data = currentProducts.slice(indexOfFirstProduct, indexOfLastProduct);
-  const currentProductsNumber = currentProducts.length;
+  data = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProductsNumber = products.length;
+
+  let asyncParams = {category: params.category, priceFrom: params.priceFrom, priceTo: params.priceTo}
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const filteredProducts = currentProducts.filter((product) =>
-    product.model.toLowerCase().includes(searchValue.toLowerCase())
-  );
+  useEffect(() => {
+    dispatch(
+      productsData(asyncParams)
+    );
+  }, [dispatch, searchParams]);
 
   const handleAddToCart = (item) => {
-    const productId = item.id
+    const productId = item.id;
     const quantity = 1;
     dispatch(addToCart(item));
     setShowPopup(true);
@@ -35,6 +45,7 @@ const ProductsList = ({ currentProducts, sendDataToParent }) => {
       setShowPopup(false);
     }, 1000);
   };
+
 
   const conditionMet = true;
   if (conditionMet) {
@@ -46,11 +57,11 @@ const ProductsList = ({ currentProducts, sendDataToParent }) => {
     <div className="PLmain">
       <div className="PLcontainer">
         <div className="PLbox">
-        {showPopup && (
-                <div className="AddToCartPopup">
-                  <p>You added a product to the cart successfully!</p>
-                </div>
-              )}
+          {showPopup && (
+            <div className="AddToCartPopup">
+              <p>You added a product to the cart successfully!</p>
+            </div>
+          )}
           {data.map((item) => (
             <li key={item.id}>
               <div className="PLimg">
@@ -154,7 +165,7 @@ const ProductsList = ({ currentProducts, sendDataToParent }) => {
       </div>
       <div className="PLpageButtonsContainer">
         {Array.from({
-          length: Math.ceil(currentProducts.length / productsPerPage),
+          length: Math.ceil(products .length / productsPerPage),
         }).map((_, index) => (
           <div key={Math.random()}>
             <button
@@ -166,7 +177,7 @@ const ProductsList = ({ currentProducts, sendDataToParent }) => {
             </button>
           </div>
         ))}
-      </div>
+      </div>{" "}
     </div>
   );
 };

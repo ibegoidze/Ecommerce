@@ -18,23 +18,33 @@ import SubscribeBar from "../Components/MainComponents/SubscribeBar";
 
 import StPicOne from "../images/image92.png";
 import StPicTwo from "../images/image98.png";
+import { useSearchParams } from "react-router-dom";
 
 const Main = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const params = Object.fromEntries([...searchParams]);
+  let asyncParams = {
+    category: params.category,
+    priceFrom: params.priceFrom,
+    priceTo: params.priceTo,
+  };
+
+  const { products } = useSelector((state) => state.products);
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(productsData()); // 5
+    dispatch(productsData(asyncParams)); // 5
     dispatch(latestProductsData()); // 6
     dispatch(categoriesData()); // 12
     dispatch(offersData()); // 5
     dispatch(mostDemandProductsData()); // 5 @index.js:30
   }, [dispatch]);
 
-  const { products } = useSelector((state) => state.products);
   const { latestProducts } = useSelector((state) => state.latestProducts);
   const { mostDemandProducts } = useSelector(
     (state) => state.mostDemandProducts
   );
-
 
   return (
     <div>

@@ -7,13 +7,8 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-
 const Brands = () => {
-
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(productsData()); // 12
-  }, [dispatch]);
   const { products } = useSelector((state) => state.products);
 
   const [wrapBrands, setWrapBrands] = useState(true);
@@ -22,7 +17,7 @@ const Brands = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = Object.fromEntries([...searchParams]);
 
-  const uniqueBrands = [...new Set(products.map(product => product.brand))];
+  const uniqueBrands = [...new Set(products.map((product) => product.brand))];
   const uniqueBrandsWithIds = uniqueBrands.map((brand, index) => ({
     id: index + 1,
     brand: brand,
@@ -35,7 +30,17 @@ const Brands = () => {
       pageNumber: 1,
     });
   };
- 
+
+  let asyncParams = {
+    category: params.category,
+    priceFrom: params.priceFrom,
+    priceTo: params.priceTo,
+  };
+
+  useEffect(() => {
+    dispatch(productsData(asyncParams)); // 12
+  }, [dispatch]);
+
   return (
     <div className="LVBmain">
       <div className="LVBcontainer">
@@ -62,7 +67,20 @@ const Brands = () => {
             <div className="LVBlist">
               <ul className={`${seeAll ? "LVBlistUl" : ""}`}>
                 {uniqueBrandsWithIds.map((item) => {
-                  return <li key={item.id} className="LVBli" onClick={() => handleChangeBrand(item.id)}><input type="checkbox" className="LVBcheckbox" id={Math.random()} />{item.brand}</li>;
+                  return (
+                    <li
+                      key={item.id}
+                      className="LVBli"
+                      onClick={() => handleChangeBrand(item.id)}
+                    >
+                      <input
+                        type="checkbox"
+                        className="LVBcheckbox"
+                        id={Math.random()}
+                      />
+                      {item.brand}
+                    </li>
+                  );
                 })}
               </ul>
               <div

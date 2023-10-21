@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import sally from "../images/Saly-14.png"
 
-const SignIn = () => {
+const SignIn = (loginSuccess) => {
   const [currentForm, setCurrentForm] = useState("login");
 
   const toggleForm = (formName) => {
@@ -13,6 +13,7 @@ const SignIn = () => {
   };
 
   return (
+    
     <div className="SImain">
       <div className="SIleftSide">
         <div className="SIheader">Sign in to</div>

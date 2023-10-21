@@ -9,6 +9,8 @@ const LogIn = () => {
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
 
+  const token = localStorage.getItem('token')
+
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -30,7 +32,6 @@ const LogIn = () => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log("Login successful", data);
         localStorage.setItem("token", JSON.stringify(data.jwt));
         setLoginSuccess(true);
         setSuccessMessage("Login successful!");
@@ -50,10 +51,11 @@ const LogIn = () => {
 
   return (
     <div>
-      {loginSuccess ? (
+      {loginSuccess || token ? (
         <div>
           <p>{successMessage}</p>
           <button onClick={() => navigate("/")}>Go to Main Page</button>
+          <button onClick={() => navigate("/")}>Go to Products Page</button>
           <button onClick={handleLogout}>Log Out</button>
         </div>
       ) : (

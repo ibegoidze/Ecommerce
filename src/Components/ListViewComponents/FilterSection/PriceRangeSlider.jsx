@@ -2,15 +2,25 @@ import React, { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "./PriceRangeSlider.scss";
+import { useSearchParams } from "react-router-dom";
 
-const PriceRangeSlider = ({ onPriceRangeChange }) => {
+const PriceRangeSlider = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
   const [wrapPriceRange, setWrapPriceRange] = useState(true);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const params = Object.fromEntries([...searchParams]);
+
+
   const handleApplyClick = () => {
-    onPriceRangeChange(minPrice, maxPrice);
-    console.log(`Selected Price Range: ${minPrice} - ${maxPrice}`);
+    setSearchParams({
+      ...params,
+      priceFrom: minPrice,
+      priceTo: maxPrice,
+      pageNumber: 1,
+    });
   };
 
   return (

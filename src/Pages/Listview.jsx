@@ -18,71 +18,66 @@ import { useSearchParams } from "react-router-dom";
 const Listview = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(productsData());
     dispatch(latestProductsData());
     dispatch(mostDemandProductsData());
   }, [dispatch]);
   const { products } = useSelector((state) => state.products);
   const { latestProducts } = useSelector((state) => state.latestProducts);
-  const { mostDemandProducts } = useSelector(state => state.mostDemandProducts);
-  const newMostDemant = mostDemandProducts.slice(0, 2)
+  const { mostDemandProducts } = useSelector(
+    (state) => state.mostDemandProducts
+  );
+  const newMostDemant = mostDemandProducts.slice(0, 2);
 
-
-  const mergedArray = [...products, ...latestProducts, ...newMostDemant];
-
-
-  console.log(mostDemandProducts)
+  // const mergedArray = [...products, ...latestProducts, ...newMostDemant];
 
   const [searchParams, setSearchParams] = useSearchParams();
   const params = Object.fromEntries([...searchParams]);
 
-  let currentProducts = mergedArray;
+  // let currentProducts = mergedArray;
 
-  if (params.brand) {
-    currentProducts = currentProducts.filter((item) => {
-      return item.brandId === params.brand;
-    });
-  }
-
-  if (params.category) {
-    currentProducts = currentProducts.filter((item) => {
-      return item.categoryId === params.category;
-    });
-  }
-
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(1000);
-
-  const handlePriceRangeChange = (min, max) => {
-    setMinPrice(min);
-    setMaxPrice(max);
+  let asyncParams = {
+    category: params.category,
+    priceFrom: params.priceFrom,
+    priceTo: params.priceTo,
   };
 
-  currentProducts = currentProducts.filter((item) => {
-    const itemPrice = parseFloat(item.price);
-    return itemPrice >= minPrice && itemPrice <= maxPrice;
-  });
+  useEffect(() => {
+    dispatch(productsData(asyncParams));
+  }, [dispatch, searchParams]);
+
+  // if (params.brand) {
+  //   currentProducts = currentProducts.filter((item) => {
+  //     return item.brandId === params.brand;
+  //   });
+  // }
+
+  // if (params.category) {
+  //   currentProducts = currentProducts.filter((item) => {
+  //     return item.categoryId === params.category;
+  //   });
+  // }
+
+
 
   const [dataFromProductsList, setDataFromProductsList] = useState(null);
   const handleDataFromProductsList = (productsNumber) => {
     setDataFromProductsList(productsNumber);
   };
 
-  console.log(mergedArray)
   return (
     <div className="LVmain">
       <div className="LVcontainer">
         <div className="LVfilterSection">
           <Category />
           <Brands />
-          <PriceRangeSlider onPriceRangeChange={handlePriceRangeChange} />
+          <PriceRangeSlider />
           <Raitings />
         </div>
         <div className="LVproductSection">
           <div className="LVGVbar">
             <GVbar dataFromParent={dataFromProductsList} />
             <ProductsList
-              currentProducts={currentProducts}
+              // currentProducts={products}
               sendDataToParent={handleDataFromProductsList}
             />
           </div>

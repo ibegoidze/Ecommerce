@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cartItems: [],
   isLoading: false,
+  removeFromCartIsLoading: false,
   error: null,
 };
 
@@ -24,14 +25,17 @@ const cartSlice = createSlice({
     removeFromCartStart: (state) => {
       state.isLoading = true;
       state.error = null;
+      state.removeFromCartIsLoading = true
     },
     removeFromCartSuccess: (state, action) => {
       state.isLoading = false;
       state.cartItems = state.cartItems.filter((item) => item.productId !== action.payload);
+      state.removeFromCartIsLoading = false
     },
     removeFromCartFailure: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
+      state.removeFromCartIsLoading = false
     },
     clearCart: (state) => {
       state.cartItems = [];
@@ -94,7 +98,6 @@ export const addToCart = (product) => async (dispatch) => {
 export const removeFromCart = (productId) => async (dispatch) => {
   dispatch(removeFromCartStart());
   try {
-    console.log('Removing product ID:', productId);
     const token = JSON.parse(localStorage.getItem("token"));
     const response = await fetch(
       "https://amazon-digital-prod.azurewebsites.net/api/cart/removefromcart",

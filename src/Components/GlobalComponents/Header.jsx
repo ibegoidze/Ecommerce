@@ -107,9 +107,9 @@ const Header = () => {
               </div>
             </li>
             <li className="navigationLi">
-              <div className="navigationItemContainer">
+              <div className="navigationItemContainer" onClick={() => navigate("/auth/login")}>
                 <img src={profile} alt="profile logo" />
-                <span className="textSpan">Sign in</span>
+                <span className="textSpan" >Sign in</span>
               </div>
             </li>
             <li className="navigationLi">

@@ -8,11 +8,8 @@ const LogIn = () => {
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-
-  const token = localStorage.getItem('token')
-
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
-
   const handleLogin = async () => {
     try {
       const response = await fetch(
@@ -45,8 +42,8 @@ const LogIn = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setLoginSuccess(false); 
-    setSuccessMessage("Logged out successfully"); 
+    setLoginSuccess(false);
+    setSuccessMessage("Logged out successfully");
   };
 
   return (
@@ -55,7 +52,9 @@ const LogIn = () => {
         <div>
           <p>{successMessage}</p>
           <button onClick={() => navigate("/")}>Go to Main Page</button>
-          <button onClick={() => navigate("/")}>Go to Products Page</button>
+          <button onClick={() => navigate("/ListView")}>
+            Go to Products Page
+          </button>
           <button onClick={handleLogout}>Log Out</button>
         </div>
       ) : (

@@ -8,11 +8,8 @@ const PriceRangeSlider = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
   const [wrapPriceRange, setWrapPriceRange] = useState(true);
-
   const [searchParams, setSearchParams] = useSearchParams();
-
   const params = Object.fromEntries([...searchParams]);
-
 
   const handleApplyClick = () => {
     setSearchParams({

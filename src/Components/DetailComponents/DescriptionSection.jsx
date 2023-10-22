@@ -1,7 +1,7 @@
 import React from "react";
 import "./DescriptionSection.scss";
 
-const DescriptionSection = ({SingleProduct}) => {
+const DescriptionSection = ({ SingleProduct }) => {
   return (
     <div className="Dmain">
       <div className="Dcontainer">
@@ -11,11 +11,7 @@ const DescriptionSection = ({SingleProduct}) => {
           <div className="Dsingle">Shipping</div>
           <div className="Dsingle">About company</div>
         </div>
-        <div className="Dinformation">
-          {
-            SingleProduct.description
-          }
-        </div>
+        <div className="Dinformation">{SingleProduct.description}</div>
         <div className="Dlist">
           <div className="DlistSingle">
             <div className="DrightS">Model</div>

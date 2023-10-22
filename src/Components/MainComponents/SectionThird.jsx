@@ -3,7 +3,6 @@ import "./SectionThird.scss";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-
 const SectionThird = ({ img, Pdata, LPdata, title }) => {
   const newLParray = LPdata.slice(0, 5);
   const newParaay = Pdata.slice(0, 3);
@@ -16,11 +15,10 @@ const SectionThird = ({ img, Pdata, LPdata, title }) => {
           <button className="LPbutton">Source now</button>
         </div>
         <div className="LPboxes">
-          
           {newLParray.map((item) => {
             return (
-                <li key={item.id}>
-                  <Link className="RIimg" to={`/Detail/${item.id}`}>
+              <li key={item.id}>
+                <Link className="RIimg" to={`/Detail/${item.id}`}>
                   <div className="LPsingleBox">
                     <div className="LPtextBox">
                       <h5>{item.name.slice(0, 10)}</h5>
@@ -32,26 +30,26 @@ const SectionThird = ({ img, Pdata, LPdata, title }) => {
                       <img src={item.images[1]} />
                     </div>
                   </div>
-                  </Link>
-                </li>
+                </Link>
+              </li>
             );
           })}{" "}
           {newParaay.map((item) => {
             return (
               <li key={item.id + 1}>
                 <Link className="RIimg" to={`/Detail/${item.id}`}>
-                <div className="LPsingleBox">
-                  <div className="LPtextBox">
-                    <h5>{item.name.slice(0, 10)}</h5>
-                    <p>
-                      from <br />
-                      USD{item.price}$
-                    </p>
+                  <div className="LPsingleBox">
+                    <div className="LPtextBox">
+                      <h5>{item.name.slice(0, 10)}</h5>
+                      <p>
+                        from <br />
+                        USD{item.price}$
+                      </p>
+                    </div>
+                    <div className="LPimgBox">
+                      <img src={item.images} />
+                    </div>
                   </div>
-                  <div className="LPimgBox">
-                    <img src={item.images} />
-                  </div>
-                </div>
                 </Link>
               </li>
             );

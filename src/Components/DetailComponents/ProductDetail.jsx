@@ -1,7 +1,7 @@
 import React from "react";
 import "./ProductDetail.scss";
 
-const ProductDetail = ({SingleProduct}) => {
+const ProductDetail = ({ SingleProduct }) => {
   return (
     <div className="PDmain">
       <div className="PDcontainer">
@@ -20,9 +20,7 @@ const ProductDetail = ({SingleProduct}) => {
           </svg>{" "}
           in stock
         </div>
-        <h1 className="DPproductName">
-          {SingleProduct.name}
-        </h1>
+        <h1 className="DPproductName">{SingleProduct.name}</h1>
         <div className="DPraitingBar">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -131,14 +129,12 @@ const ProductDetail = ({SingleProduct}) => {
             <p>Type:</p>
             <p>Design:</p>
             <p>Material:</p>
-
           </div>
           <div className="DPDB">
             <span>Classic shoes</span>
             <span>Plastic material</span>
             <span>Modern nice</span>
           </div>
-          
         </div>
 
         <div className="DPtypeBar2">
@@ -146,14 +142,14 @@ const ProductDetail = ({SingleProduct}) => {
             <p>Costumization:</p>
             <p>Protection:</p>
             <p>Warranty:</p>
-
           </div>
           <div className="DPDB2">
-            <span>Customized logo and <br/> design custom packages</span>
+            <span>
+              Customized logo and <br /> design custom packages
+            </span>
             <span>Refund Policy</span>
             <span>2 years full warranty</span>
           </div>
-          
         </div>
       </div>
     </div>

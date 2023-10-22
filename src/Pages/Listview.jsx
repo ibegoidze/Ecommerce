@@ -28,12 +28,8 @@ const Listview = () => {
   );
   const newMostDemant = mostDemandProducts.slice(0, 2);
 
-  // const mergedArray = [...products, ...latestProducts, ...newMostDemant];
-
   const [searchParams, setSearchParams] = useSearchParams();
   const params = Object.fromEntries([...searchParams]);
-
-  // let currentProducts = mergedArray;
 
   let asyncParams = {
     category: params.category,
@@ -44,20 +40,6 @@ const Listview = () => {
   useEffect(() => {
     dispatch(productsData(asyncParams));
   }, [dispatch, searchParams]);
-
-  // if (params.brand) {
-  //   currentProducts = currentProducts.filter((item) => {
-  //     return item.brandId === params.brand;
-  //   });
-  // }
-
-  // if (params.category) {
-  //   currentProducts = currentProducts.filter((item) => {
-  //     return item.categoryId === params.category;
-  //   });
-  // }
-
-
 
   const [dataFromProductsList, setDataFromProductsList] = useState(null);
   const handleDataFromProductsList = (productsNumber) => {
@@ -77,7 +59,7 @@ const Listview = () => {
           <div className="LVGVbar">
             <GVbar dataFromParent={dataFromProductsList} />
             <ProductsList
-              // currentProducts={products}
+              products={products}
               sendDataToParent={handleDataFromProductsList}
             />
           </div>

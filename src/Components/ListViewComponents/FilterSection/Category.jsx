@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const Category = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(categoriesData()); // 12
+    dispatch(categoriesData());
   }, [dispatch]);
   const { categories } = useSelector((state) => state.categories);
   const navigate = useNavigate();
@@ -25,6 +25,7 @@ const Category = () => {
     setSearchParams({
       ...params,
       category: categoriesId,
+      searchKey: "",
       pageNumber: 1,
     });
   };
@@ -53,7 +54,12 @@ const Category = () => {
         <div>
           {wrapCategories && (
             <div className="LVClist">
-              <div className="LVCfirstAll" onClick={() => navigate("/Listview")}>All categories</div>
+              <div
+                className="LVCfirstAll"
+                onClick={() => navigate("/Listview")}
+              >
+                All categories
+              </div>
               <ul className={`${seeAll ? "LVClistUl" : ""}`}>
                 {categories.map((item) => (
                   <li

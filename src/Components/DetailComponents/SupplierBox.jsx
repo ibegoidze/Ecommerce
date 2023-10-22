@@ -1,8 +1,17 @@
 import React from "react";
 import "./SupplierBox.scss";
 import R from "../../images/R.png";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../Store/Cart/Cart";
 
-const SupplierBox = () => {
+const SupplierBox = ({singleProduct}) => {
+  const dispatch = useDispatch()
+
+  console.log(singleProduct.id)
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(singleProduct.id));
+  };
   return (
     <div className="SBMain">
       <div className="SBcontainer">
@@ -61,10 +70,10 @@ const SupplierBox = () => {
           </div>
         </div>
         <div className="SBbuttons">
-            <button className="SBSIbutton">Send inquiry</button>
+          <button className="SBSIbutton" onClick={() => handleAddToCart()}>add to cart</button>
         </div>
         <div className="SBbuttons">
-            <button className="SBSPbuttonn">Seler's profile</button>
+          <button className="SBSPbuttonn">Seler's profile</button>
         </div>
       </div>
     </div>

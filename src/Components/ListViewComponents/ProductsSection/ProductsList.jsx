@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./ProductsList.scss";
 import { useSearchParams, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart, increaseQuantity } from "../../../Store/Cart/Cart";
-import { productsData } from "../../../Store/Products/index";
-import { useSelector } from "react-redux";
+import { addToCart } from "../../../Store/Cart/Cart";
 
-const ProductsList = ({ sendDataToParent }) => {
-  const { products } = useSelector((state) => state.products);
-
+const ProductsList = ({ sendDataToParent, products }) => {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,29 +12,17 @@ const ProductsList = ({ sendDataToParent }) => {
   const params = Object.fromEntries([...searchParams]);
   const [searchValue, setSearchValue] = useState("");
 
-  let data = products
+  let data = products;
 
   const productsPerPage = 4;
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  data = products.slice(indexOfFirstProduct, indexOfLastProduct);
-  const currentProductsNumber = products.length;
-
-  let asyncParams = {category: params.category, priceFrom: params.priceFrom, priceTo: params.priceTo}
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  useEffect(() => {
-    dispatch(
-      productsData(asyncParams)
-    );
-  }, [dispatch, searchParams]);
-
   const handleAddToCart = (item) => {
-    const productId = item.id;
-    const quantity = 1;
     dispatch(addToCart(item));
     setShowPopup(true);
     setTimeout(() => {
@@ -46,13 +30,17 @@ const ProductsList = ({ sendDataToParent }) => {
     }, 1000);
   };
 
-
-  const conditionMet = true;
-  if (conditionMet) {
-    const productsNumber = currentProductsNumber;
-    sendDataToParent(productsNumber);
+  if (params.searchKey) {
+    data = products.filter((item) => {
+      return item.name.includes(params.searchKey);
+    });
   }
 
+  const currentProductsNumber = data.length;
+  const conditionMet = true;
+  if (conditionMet) {
+    sendDataToParent(currentProductsNumber);
+  }
   return (
     <div className="PLmain">
       <div className="PLcontainer">
@@ -62,7 +50,7 @@ const ProductsList = ({ sendDataToParent }) => {
               <p>You added a product to the cart successfully!</p>
             </div>
           )}
-          {data.map((item) => (
+          {data.slice(indexOfFirstProduct, indexOfLastProduct).map((item) => (
             <li key={item.id}>
               <div className="PLimg">
                 <Link to={`/Detail/${item.id}`}>
@@ -156,7 +144,7 @@ const ProductsList = ({ sendDataToParent }) => {
                   <div className="PLviewDetails">View details</div>
                 </Link>
               </div>
-              <button onClick={() => handleAddToCart(item)} id="addtocart">
+              <button onClick={() => handleAddToCart(item.id)} id="addtocart">
                 add to cart
               </button>
             </li>
@@ -165,7 +153,7 @@ const ProductsList = ({ sendDataToParent }) => {
       </div>
       <div className="PLpageButtonsContainer">
         {Array.from({
-          length: Math.ceil(products .length / productsPerPage),
+          length: Math.ceil(products.length / productsPerPage),
         }).map((_, index) => (
           <div key={Math.random()}>
             <button

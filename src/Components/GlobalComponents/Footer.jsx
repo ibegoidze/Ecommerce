@@ -8,7 +8,7 @@ import twitter from "../../images/FooterImages/twitter.png";
 import youtube from "../../images/FooterImages/youtube.png";
 import appStore from "../../images/FooterImages/AppStore.png";
 import googlePlay from "../../images/FooterImages/GooglePlay.png";
-import usFlag from "../../images/FooterImages/USflag.png"
+import usFlag from "../../images/FooterImages/USflag.png";
 import arrow from "../../images/Arrow.png";
 
 const Footer = () => {
@@ -21,8 +21,7 @@ const Footer = () => {
             <img src={Brand} alt="logo" className="footerBrandlogo" />
           </div>
           <div className="footerText">
-            Best information about the company  gies here but now lorem
-            ipsum is
+            Best information about the company gies here but now lorem ipsum is
           </div>
           <div className="footerIcons">
             <img src={facebook} alt="facebookicon" />
@@ -68,7 +67,10 @@ const Footer = () => {
       </div>
       <div className="bottomFooter">
         <span className="Ecommerce">2023 Ecommerce.</span>
-        <span className="footerLanguage"><img src={usFlag} alt="usFlag" /> English <img src={arrow} alt="arrow"/></span>
+        <span className="footerLanguage">
+          <img src={usFlag} alt="usFlag" /> English{" "}
+          <img src={arrow} alt="arrow" />
+        </span>
       </div>
     </div>
   );

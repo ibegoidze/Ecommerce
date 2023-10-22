@@ -16,12 +16,11 @@ const Routing = () => {
         <Route path="/" element={<Main />} />
         <Route path="Detail/:id" element={<Detail />} />
         <Route path="ListView" element={<ListView />} />
-        <Route path="SignIn" element={<SignIn />} />
+        <Route path="/auth/:method" element={<SignIn />} />
         <Route path="*" element={<ErrorPage />} />
         <Route element={<RequireAuth/>}>
           <Route path="Cart" element={<Cart />} />
         </Route>
-        {/* <Route path="Cart" element={isAuthenticated ? <Cart /> : <Navigate to="/SignIn" />}/> */}
       </Route>
     </Routes>
   );

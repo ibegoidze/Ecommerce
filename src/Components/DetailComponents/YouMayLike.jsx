@@ -16,8 +16,11 @@ const YouMayLike = ({ data }) => {
                 <div>
                   <div className="YMLitemName">{item.name.slice(0, 10)}...</div>
                   <div className="YMLsalePrice">
-                    ${item.newPrice}{' '}{' '}
-                    <p>{Math.round(100 - (item.newPrice * 100) / item.oldPrice)}% off</p>
+                    ${item.newPrice}{" "}
+                    <p>
+                      {Math.round(100 - (item.newPrice * 100) / item.oldPrice)}%
+                      off
+                    </p>
                   </div>
                 </div>
               </li>

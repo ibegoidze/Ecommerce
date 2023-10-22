@@ -5,9 +5,8 @@ import { useRef } from "react";
 const DPhotos = ({ SingleProduct, product }) => {
   const mainImageRef = useRef();
   const handlePicture = (src) => {
-    mainImageRef.current.src = src
+    mainImageRef.current.src = src;
   };
-
 
   return (
     <div className="PVimages">

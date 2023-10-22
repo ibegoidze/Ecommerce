@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Modal } from "antd";
 
 import "./Header.scss";
 import profile from "../../images/profile.png";
@@ -8,14 +9,56 @@ import message from "../../images/Message.png";
 import cart from "../../images/Cart.png";
 import logo from "../../images/logo-symbol.png";
 import Brand from "../../images/Brand.png";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getCartProducts } from "../../Store/Cart/Cart";
 
 const Header = () => {
+  const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
-  const cartItems = useSelector((state) => state.cartItems.cartItems);
-  const quantity = cartItems.reduce((totalQuantity, item) => {
-    return totalQuantity + item.quantity;
-  }, 0);
+  const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const token = localStorage.getItem("token");
+
+  const showModal = () => {
+    if (token) {
+      navigate("/Cart");
+    } else {
+      setIsModalOpen(true);
+    }
+  };
+  const handleOk = () => {
+    navigate("/Cart");
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const params = Object.fromEntries([...searchParams]);
+
+  const { cartItems, addTocartIsLoading, removeFromCartIsLoading } =
+    useSelector((state) => state.cartItems);
+
+  const handleSearch = () => {
+    if (searchValue) {
+      setSearchParams({
+        ...params,
+        searchKey: searchValue,
+        pageNumber: 1,
+      });
+      navigate(`/ListView?searchKey=${searchValue}`);
+      setSearchValue("");
+    }
+  };
+
+  useEffect(() => {
+    dispatch(getCartProducts());
+  }, [dispatch, removeFromCartIsLoading, addTocartIsLoading]);
+
+  console.log(cartItems);
 
   return (
     <header className="header">
@@ -30,8 +73,16 @@ const Header = () => {
         </div>
         <div className="searchContainer">
           <div className="searchDiv">
-            <input type="text" placeholder="Search" id="search"></input>
-            <button type="button">Search</button>
+            <input
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              type="text"
+              placeholder="Search"
+              id="search"
+            ></input>
+            <button type="button" onClick={() => handleSearch()}>
+              Search
+            </button>
           </div>
         </div>
         <div className="navigation">
@@ -56,25 +107,33 @@ const Header = () => {
               </div>
             </li>
             <li className="navigationLi">
-              <div
-                className="navigationItemContainer"
-                onClick={() => navigate("SignIn")}
-              >
+              <div className="navigationItemContainer">
                 <img src={profile} alt="profile logo" />
                 <span className="textSpan">Sign in</span>
               </div>
             </li>
             <li className="navigationLi">
-              <div 
+              <div
                 className="navigationItemContainer"
-                onClick={() => navigate("Cart")}
+                onClick={() => showModal()}
               >
                 <img src={cart} alt="cart logo" />
                 <span className="textSpan">Cart</span>
               </div>
-              {quantity > 0 && (
-                  <span className="cartBadge"><div className="asdawfawfawg">{quantity}</div></span>
-                )}
+              <Modal
+                title="Basic Modal"
+                okText={"Log In"}
+                open={isModalOpen}
+                onOk={handleOk}
+                onCancel={handleCancel}
+              >
+                <p>you must be authorized</p>
+              </Modal>
+              {cartItems.length > 0 && (
+                <span className="cartBadge">
+                  <div className="asdawfawfawg">{cartItems.length}</div>
+                </span>
+              )}
             </li>
           </ul>
         </div>

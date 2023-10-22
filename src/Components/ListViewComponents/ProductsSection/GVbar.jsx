@@ -1,7 +1,7 @@
 import React from "react";
 import "./GVbar.scss";
 
-const GVbar = ({ dataFromParent}) => {
+const GVbar = ({ dataFromParent }) => {
   return (
     <div className="GVmain">
       <div className="GVcontainer">

@@ -9,10 +9,8 @@ import "./SectionOne.scss";
 
 const SectionOne = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const params = Object.fromEntries([...searchParams]);
-
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -31,7 +29,7 @@ const SectionOne = () => {
     navigate(`/ListView?category=${categorieId}`);
   };
 
-    const handleLogout = () => {
+  const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
   };
@@ -68,19 +66,28 @@ const SectionOne = () => {
                 Hi user <br /> let's get started
               </span>
             </div>
-            {!token? <div>
-              <button onClick={() => navigate("/Signin")} className="SoJoinNow">
-                Join now
-              </button>
-            </div> : ''}
+            {!token ? (
+              <div>
+                <button
+                  onClick={() => navigate("/auth/register")}
+                  className="SoJoinNow"
+                >
+                  Join now
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
             <div>
-              {token ? <button onClick={() => handleLogout()} className="SoLogIn">
-              Log out
-            </button> :
-              <button onClick={() => navigate("/Signin")} className="SoLogIn">
-                Log in
-              </button>
-              }
+              {token ? (
+                <button onClick={() => handleLogout()} className="SoLogIn">
+                  Log out
+                </button>
+              ) : (
+                <button onClick={() => navigate("/auth/login")} className="SoLogIn">
+                  Log in
+                </button>
+              )}
             </div>
           </div>
           <div className="SoSecondBox">

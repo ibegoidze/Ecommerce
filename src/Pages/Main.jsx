@@ -34,11 +34,11 @@ const Main = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(productsData(asyncParams)); // 5
-    dispatch(latestProductsData()); // 6
-    dispatch(categoriesData()); // 12
-    dispatch(offersData()); // 5
-    dispatch(mostDemandProductsData()); // 5 @index.js:30
+    dispatch(productsData(asyncParams));
+    dispatch(latestProductsData());
+    dispatch(categoriesData());
+    dispatch(offersData());
+    dispatch(mostDemandProductsData());
   }, [dispatch]);
 
   const { latestProducts } = useSelector((state) => state.latestProducts);

@@ -8,7 +8,7 @@ import "./SectionTwo.scss";
 const SectionTwo = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(offersData()); // 5
+    dispatch(offersData());
   }, [dispatch]);
 
   const { offers } = useSelector((state) => state.offers);
@@ -44,7 +44,6 @@ const SectionTwo = () => {
               <li key={item.id}>
                 <div>
                   <img src={item.image} />
-
                 </div>
                 <div className="StItemName">{item.name.slice(0, 10)}</div>
                 <div className="StSalePrice">

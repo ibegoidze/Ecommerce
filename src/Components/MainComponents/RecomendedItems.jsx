@@ -7,11 +7,8 @@ import { Link, useSearchParams } from "react-router-dom";
 
 const RecomendedItems = () => {
   const dispatch = useDispatch();
-
   const [searchParams, setSearchParams] = useSearchParams();
-
   const params = Object.fromEntries([...searchParams]);
-
   const { products } = useSelector((state) => state.products);
 
   let asyncParams = {
@@ -20,10 +17,9 @@ const RecomendedItems = () => {
     priceTo: params.priceTo,
   };
   useEffect(() => {
-    dispatch(productsData(asyncParams)); // 5
+    dispatch(productsData(asyncParams));
   }, [dispatch]);
 
-  // const RIproducts = products.slice(0, 10);
   return (
     <div className="RImain">
       <div className="RIcontainer">

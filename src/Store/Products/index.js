@@ -14,8 +14,8 @@ export const productsData = createAsyncThunk(
 
 const initialState = {
   products: [],
-  isLoading: false, // Changed to boolean
-  error: null, // Changed to null
+  isLoading: false,
+  error: null, 
 };
 
 const productsSlice = createSlice({
@@ -23,25 +23,25 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     clearProducts: (state) => {
-      state.products = []; // Updated to state.products
+      state.products = []; 
     },
     removeProducts: (state, action) => {
-      state.products = state.products.filter((item) => item.id !== action.payload); // Updated to state.products and fixed filter typo
+      state.products = state.products.filter((item) => item.id !== action.payload); 
     },
   },
   extraReducers: {
     [productsData.pending]: (state) => {
       state.isLoading = true;
-      state.error = null; // Updated to null
+      state.error = null; 
     },
-    [productsData.fulfilled]: (state, action) => { // Updated to action
-      state.products = action.payload // Updated to action.payload.data
+    [productsData.fulfilled]: (state, action) => { 
+      state.products = action.payload 
       state.isLoading = false;
-      state.error = null; // Updated to null
+      state.error = null; 
     },
-    [productsData.rejected]: (state, action) => { // Updated to action
+    [productsData.rejected]: (state, action) => {
       state.isLoading = false;
-      state.error = action.payload; // Updated to action.payload
+      state.error = action.payload; 
     },
   },
 });

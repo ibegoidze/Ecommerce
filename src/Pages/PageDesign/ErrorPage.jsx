@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import "../../Components/MainComponents/ErrorPage.scss"
+import React from "react";
+import { Link } from "react-router-dom";
+import "../../Components/MainComponents/ErrorPage.scss";
 
 function ErrorPage() {
   return (

@@ -4,6 +4,7 @@ const initialState = {
   cartItems: [],
   isLoading: false,
   removeFromCartIsLoading: false,
+  addTocartIsLoading: false,
   error: null,
 };
 
@@ -12,14 +13,14 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCartStart: (state) => {
-      state.isLoading = true;
+      state.addTocartIsLoading = true;
       state.error = null;
     },
     addToCartSuccess: (state, action) => {
-      state.isLoading = false;
+      state.addTocartIsLoading = false;
     },
     addToCartFailure: (state, action) => {
-      state.isLoading = false;
+      state.addTocartIsLoading = false;
       state.error = action.payload;
     },
     removeFromCartStart: (state) => {
@@ -80,7 +81,7 @@ export const addToCart = (product) => async (dispatch) => {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ productId: product.id }),
+        body: JSON.stringify({ productId: product }),
       }
     );
     if (response.ok) {

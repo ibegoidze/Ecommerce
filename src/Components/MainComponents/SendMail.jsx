@@ -28,13 +28,28 @@ const SendMail = () => {
             />
           </div>
           <div>
-            <input className="SMtmd" id="SMinputw" type="text" placeholder="Type more details" />
+            <input
+              className="SMtmd"
+              id="SMinputw"
+              type="text"
+              placeholder="Type more details"
+            />
           </div>
           <div className="SMti">
-            <input className="SMti1" id="SMinpute" type="text" placeholder="Quantity" />
-            <input className="SMti2" id="SMinputr" type="text" placeholder="Pcs" />
+            <input
+              className="SMti1"
+              id="SMinpute"
+              type="text"
+              placeholder="Quantity"
+            />
+            <input
+              className="SMti2"
+              id="SMinputr"
+              type="text"
+              placeholder="Pcs"
+            />
           </div>
-          <button  type="button" className="inquiryButton">
+          <button type="button" className="inquiryButton">
             Send inquiry
           </button>
         </div>

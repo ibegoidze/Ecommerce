@@ -1,7 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./CartContainer.scss";
-import { removeFromCart, clearCart, getCartProducts } from "../../Store/Cart/Cart";
+import {
+  removeFromCart,
+  clearCart,
+  getCartProducts,
+} from "../../Store/Cart/Cart";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -9,20 +13,16 @@ import RelatedProducts from "../DetailComponents/RelatedProducts";
 import { latestProductsData } from "../../Store/LatestProducts";
 
 function Cart() {
-  const {cartItems, removeFromCartIsLoading} = useSelector((state) => state.cartItems);
-
-  
+  const { cartItems, removeFromCartIsLoading } = useSelector(
+    (state) => state.cartItems
+  );
   const [searchParams, setSearchParams] = useSearchParams();
-
   const params = Object.fromEntries([...searchParams]);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const handleRemoveFromCart = (productId) => {
     dispatch(removeFromCart(productId));
   };
-
   const handleClearCart = () => {
     dispatch(clearCart());
   };
@@ -39,12 +39,12 @@ function Cart() {
   const { latestProducts } = useSelector((state) => state.latestProducts);
 
   useEffect(() => {
-    dispatch(getCartProducts())}
-  , [dispatch, removeFromCartIsLoading])
+    dispatch(getCartProducts());
+  }, [dispatch, removeFromCartIsLoading]);
 
   const calculateTotalPrice = () => {
     const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
-    return totalPrice.toFixed(2); 
+    return totalPrice.toFixed(2);
   };
   const [totalPrice, setTotalPrice] = useState(calculateTotalPrice());
   useEffect(() => {
@@ -123,9 +123,7 @@ function Cart() {
               <div className="CCpriceSection">
                 <div className="CCsubtotal">
                   <span>Subtotal:</span>
-                  <span>
-                    ${totalPrice}
-                  </span>
+                  <span>${totalPrice}</span>
                 </div>
                 <div className="CCdiscount">
                   <span>Discount:</span>
@@ -137,10 +135,7 @@ function Cart() {
                 </div>
                 <div className="CCtotal">
                   <h5>Total:</h5>
-                  <span>
-                    $
-                    {totalPrice + 2}
-                  </span>
+                  <span>${totalPrice + 2}</span>
                 </div>
                 <button className="CCcheckout">Checkout</button>
                 <div className="CCsvgs">

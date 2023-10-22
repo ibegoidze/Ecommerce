@@ -24,19 +24,17 @@ const DPSection = () => {
   const { latestProducts } = useSelector((state) => state.latestProducts);
   const { SingleProduct, images } = useSelector((state) => state.SingleProduct);
 
-
   const { id } = useParams();
   useEffect(() => {
     dispatch(SingleProductData(id));
   }, [dispatch, id]);
-
 
   return (
     <div className="PVmain">
       <div className="PVcontainer">
         <DPhotos product={SingleProduct} SingleProduct={images} />
         <ProductDetail SingleProduct={SingleProduct} />
-        <SupplierBox />
+        <SupplierBox singleProduct={SingleProduct} />
       </div>
       <div className="PVdescription">
         <DescriptionSection SingleProduct={SingleProduct} />

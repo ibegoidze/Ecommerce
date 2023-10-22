@@ -11,7 +11,7 @@ const SubscribeBar = () => {
           world
         </p>
         <div className="SBmailbutton">
-          <input type="email" placeholder="Email" id="SBmailinput"/>
+          <input type="email" placeholder="Email" id="SBmailinput" />
           <button>subscribe</button>
         </div>
       </div>

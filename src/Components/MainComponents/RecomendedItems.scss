@@ -15,7 +15,7 @@
     .RIbox {
       display: flex;
       background: white;
-      // width: 100%;
+      width: 100%;
       flex-wrap: wrap;
       display: flex;
       gap: 25px;
@@ -37,9 +37,9 @@
           margin: 20px 0 10px 20px;
         }
         .RIdescription {
-            color: var(--gray-500, #8B96A5);
-            font-size: 14px;
-            margin: 0 0 20px 20px;
+          color: var(--gray-500, #8b96a5);
+          font-size: 14px;
+          margin: 0 0 20px 20px;
         }
       }
       img {
@@ -50,10 +50,19 @@
     }
   }
 }
+.li2 {
+  width: 500px;
+}
 
-
-@media (max-width: 1000px) {
-  .RIbox {
-    flex-wrap: wrap;
+@media (max-width: 850px) {
+  .RImain {
+    .RIbox {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      #RISingleBox {
+        width: 45%;
+      }
+    }
   }
 }

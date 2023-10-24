@@ -58,8 +58,6 @@ const Header = () => {
     dispatch(getCartProducts());
   }, [dispatch, removeFromCartIsLoading, addTocartIsLoading]);
 
-  console.log(cartItems);
-
   return (
     <header className="header">
       <div className="headerDiv">

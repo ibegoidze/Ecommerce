@@ -47,7 +47,7 @@ const Main = () => {
   );
 
   return (
-    <div>
+    <div className="MainDiv">
       <SectionOne />
       <SectionTwo />
       <SectionThird

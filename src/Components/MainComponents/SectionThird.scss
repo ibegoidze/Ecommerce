@@ -16,7 +16,6 @@
     border: 1px solid rgb(211, 217, 225);
     border-radius: 5px;
     .imageBox {
-      //   background-repeat: no-repeat;
       background-size: cover;
       width: 20%;
       border: 1px solid rgb(211, 217, 225);
@@ -84,6 +83,47 @@
             color: #8b96a5;
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .LPmain{
+    width: 100%;
+    padding: 0;
+    .LPcontainer{
+      border: none;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .imageBox {
+        width: 100%;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        h3 {margin: 10px 0;}
+        .LPbutton{
+          display: none;
+        }
+      }
+      .LPboxes{
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        width: 100%;
+        height: 150px;
+        li {
+          min-width: 250px;
+        }
+      }::-webkit-scrollbar{
+        width: 50px;
+        height: 3px;
+        color: black;
+      }::-webkit-scrollbar-thumb {
+        background: #c9d1df; 
+        border-radius: 10px;
       }
     }
   }

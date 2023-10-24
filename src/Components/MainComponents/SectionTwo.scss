@@ -16,6 +16,9 @@
     border: 1px solid rgb(211, 217, 225);
     border-radius: 5px;
     .StOffersBox {
+      p {
+        display: none;
+      }
       width: 20%;
       h3 {
         margin: 15px 0 5px 10px;
@@ -79,6 +82,84 @@
         .StItemName {
           line-height: 27px;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .StMain {
+    width: 100%;
+    padding: 0;
+    .StContainer {
+      width: 100%;
+      padding: 0;
+      flex-direction: column;
+      border: none;
+      .StOffersBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        margin-bottom: 0;
+        h6 {
+          display: none;
+        }
+        h3 {
+          margin: 0;
+        }
+        p {
+          display: block;
+          color: var(--gray-500, #8b96a5);
+          font-weight: 400;
+          font-size: 14px;
+        }
+      }
+      .StDateContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        width: 40%;
+        .StDateBox {
+          width: 100px;
+          background-color: white;
+          h5 {
+            width: 50px;
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+      .StSingleBox {
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+        height: 100%;
+        justify-content: flex-start;
+        li {
+          min-width: 200px;
+          display: flex;
+          justify-content: flex-start;
+        }
+        .StSalePrice {
+          display: none;
+        }
+        .StItemName {
+          height: 100%;
+          padding-bottom: 10px;
+          white-space: nowrap;
+        }
+      }
+      ::-webkit-scrollbar {
+        width: 50px;
+        height: 3px;
+        color: black;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c9d1df;
+        border-radius: 10px;
       }
     }
   }

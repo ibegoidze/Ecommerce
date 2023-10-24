@@ -24,9 +24,10 @@ const RecomendedItems = () => {
     <div className="RImain">
       <div className="RIcontainer">
         <div className="RIbox">
-          {products.map((item) => {
+          {products.map((item, index) => {
+            const liClassName = `li${index + 1}`;
             return (
-              <li key={item.id}>
+              <li key={item.id} className={liClassName} id="RISingleBox">
                 <Link className="RIimg" to={`/Detail/${item.id}`}>
                   <img src={item.images} alt="product image" />
                 </Link>
